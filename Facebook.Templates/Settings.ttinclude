@@ -1,0 +1,99 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(ProjectDir)HtmlAgilityPack.dll" #>
+<#@ assembly name="$(ProjectDir)WebDriver.Remote.Common.dll" #>
+<#@ assembly name="$(ProjectDir)WebDriver.Common.dll" #>
+<#@ assembly name="$(ProjectDir)WebDriver.HtmlUnit.dll" #>
+<#@ assembly name="$(ProjectDir)htmlunit-2.7.dll" #>
+
+<#@ assembly name="$(ProjectDir)IKVM.OpenJDK.Beans.dll" #>
+<#@ assembly name="$(ProjectDir)IKVM.OpenJDK.Core.dll" #>
+<#@ assembly name="$(ProjectDir)IKVM.OpenJDK.Media.dll" #>
+<#@ assembly name="$(ProjectDir)IKVM.OpenJDK.Naming.dll" #>
+<#@ assembly name="$(ProjectDir)IKVM.OpenJDK.Remoting.dll" #>
+<#@ assembly name="$(ProjectDir)IKVM.OpenJDK.Security.dll" #>
+<#@ assembly name="$(ProjectDir)IKVM.OpenJDK.SwingAWT.dll" #>
+<#@ assembly name="$(ProjectDir)IKVM.OpenJDK.Text.dll" #>
+<#@ assembly name="$(ProjectDir)IKVM.OpenJDK.Util.dll" #>
+<#@ assembly name="$(ProjectDir)IKVM.OpenJDK.XML.API.dll" #>
+<#@ assembly name="$(ProjectDir)IKVM.OpenJDK.XML.Parse.dll" #>
+<#@ assembly name="$(ProjectDir)IKVM.Runtime.dll" #>
+<#@ assembly name="$(ProjectDir)IKVM.Runtime.JNI.dll" #>
+
+
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Configuration" #>
+<#@ import namespace="System.Linq" #>
+<#@ include file="Shared.ttinclude" #>
+
+<#+
+		const string Namespace = "Facebook.Api";
+		const string Url = "http://developers.facebook.com/docs/reference/{0}/{1}";
+		
+        string[] GraphObjects = new string[] {
+            "album",
+            "application",
+            "event",
+            "group",
+            "link",
+            "note",
+            "page",
+            "photo",
+            "post",
+            "status",
+            "subscription",
+            "user",
+			"video",
+        };	        
+
+        string[] FqlObjects = new string[] {
+            "album",
+            "application",
+            "comment",
+            "connection",
+            "cookies",
+            "developer",
+            "event",
+            "event_member",
+            "family",
+            "friend",
+            "friendlist",
+            "friendlist_member",
+            "friend_request",
+            "group",
+            "group_member",
+            "like",
+            "links",
+            "link_stat",
+            "mailbox_folder",
+            "message",
+            "metrics",
+            "notes",
+            "notification",
+            "object_url",
+            "page",
+            "page_admin",
+            "page_fan",
+            "permissions",
+            "permissions_info",
+            "photo",
+            "photo_tag",
+            "privacy",
+            "profile",
+            "standard_friend_info",
+            "standard_user_info",
+            "status",
+            "stream",
+            "stream_filter",
+            "stream_tag",
+            "thread",
+            "translation",
+            "user",
+            "video",
+            "video_tag",
+        };
+#>

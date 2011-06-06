@@ -1,0 +1,66 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="BA40B6AC-3B29-4981-BA39-4D92FBC0E3E2/f:FqlLanguage.cs" caret="340" fromTop="14" />
+      <File id="BA40B6AC-3B29-4981-BA39-4D92FBC0E3E2/d:Rest/f:RestService.cs" caret="0" fromTop="0" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:FqlObjectBuilder.cs" caret="80140" fromTop="7" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.cs" caret="21" fromTop="0" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:Test.cs" caret="39" fromTop="3" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:GraphObjectBuilder.tt" caret="703" fromTop="12" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:GraphObjectBuilder.cs" caret="172" fromTop="4" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:FqlObjectBuilder.tt" caret="693" fromTop="0" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="0" fromTop="0" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:FqlObjectBuilder.tt" caret="847" fromTop="20" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:FqlObjectBuilder.cs" caret="99450" fromTop="20" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:FqlObjectBuilder.cs" caret="5483" fromTop="23" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:GraphObjectBuilder.tt" caret="701" fromTop="12" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:GraphObjectBuilder.tt" caret="874" fromTop="17" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="2967" fromTop="15" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.cs" caret="0" fromTop="0" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="2967" fromTop="15" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:Test.cs" caret="39" fromTop="26" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:Test.cs" caret="39" fromTop="12" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:Test.cs" caret="39" fromTop="8" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:Test.cs" caret="0" fromTop="0" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="751" fromTop="15" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:Test.cs" caret="39" fromTop="3" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="751" fromTop="13" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="751" fromTop="3" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="795" fromTop="6" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="1136" fromTop="63" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="661" fromTop="0" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="795" fromTop="4" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="2967" fromTop="31" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="2967" fromTop="28" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="2967" fromTop="31" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="751" fromTop="0" />
+      <File id="62C2AEF3-227A-4901-9464-98079E2D723B/f:RestObjectBuilder.tt" caret="2967" fromTop="28" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="public" priority="0" />
+      <Item value="string" priority="1" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

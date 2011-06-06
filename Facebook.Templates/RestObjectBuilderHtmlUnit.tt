@@ -1,0 +1,253 @@
+﻿<#@ include file="Settings.ttinclude" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Windows.Forms.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+
+namespace <#=Namespace #>.Rest {
+
+<# 	var services = GetServices();
+	foreach (var serviceName in services.Keys) { #>
+
+	public class <#=ToProperName(serviceName) #>Service : RestService {
+	
+		public FacebookApp App { get; set; }
+		
+		public <#=ToProperName(serviceName) #>Service(FacebookApp app) {
+			this.App = app;
+		}
+	
+<# foreach (var method in services[serviceName]) { #>
+		
+		/// <summary>
+	<# WriteCodeComments(method.Description); #>
+		/// </summary>
+<# foreach (var p in method.Parameters) { #>
+		/// <param name="<#=p.Name#>"><#=GetParameterDescriptionComment(p.Description)#></param>
+<# } #>
+		public object <#=method.MethodProperName#>(<#=GetParametersString(method.Parameters)#>) {
+			var parameters = new Dictionary<string, object>();
+			parameters["method"] = "<#=method.MethodName#>";
+<# foreach (var p in method.Parameters) { #>
+			parameters["<#=p.Name#>"] = <#=p.Name#>;
+<# } #>
+			return App.Api(parameters);
+		}
+		
+<# } #>
+	}
+
+<# } #>
+}
+
+<#+
+	  private IWebDriver _driver;
+	public string GetParametersString(List<ParamDef> parameters) {
+		var sb = new StringBuilder();
+		foreach (var parameter in parameters) {
+			sb.Append(parameter.Type);
+			sb.Append(" ");
+			sb.Append(parameter.Name);
+			sb.Append(", ");
+		}
+		var s = sb.ToString();
+		if (s.EndsWith(", ")) {
+			s = s.Substring(0, s.Length - 2);
+		}
+		return s;
+	}
+	
+	public void Login(string username, string password){
+	
+		driver = new HtmlUnitDriver(true);
+//		driver.Url = @"http://www.facebook.com/login.php";
+//
+//		var email = driver.FindElement(By.Name("email"));
+//		email.SendKeys("some@email.com");
+//
+//		var pass = driver.FindElement(By.Name("pass"));
+//		pass.SendKeys("xxxxxxxx");
+//
+//		var inputs = driver.FindElements(By.TagName("input"));
+//		var loginButton = (from input in inputs
+//		                   where input.GetAttribute("value").ToLower() == "login"
+//		                   && input.GetAttribute("type").ToLower() == "submit"
+//		                   select input).First();
+//		loginButton.Click();
+//
+//		driver.Url = @"https://m.facebook.com/profile.php?id=1111111111";
+	
+	}
+	
+	public string GetParameterDescriptionComment(string description) {
+		var parts = description.Split(char.Parse("\n"));
+		if (parts.Length > 0) {
+			return parts[0].Trim();
+		}
+		return "";
+	}
+	
+	public Dictionary<string, List<RestMethod>> GetServices() {
+		
+		Login("wayne@prjatk.com", "Surfing2011");
+		
+		var dict = new Dictionary<string, List<RestMethod>>();
+		var methods = GetMethods();
+		foreach (var method in methods) {
+			// We don't need the fql methods because these
+			// are already handled by the FacebookApp class
+			// We dont need batch because this will be handled in a more '.Net'
+			// friendly way.
+			if (method.ServiceName != "fql" && method.ServiceName != "batch") {
+				if (!dict.ContainsKey(method.ServiceName)) {
+					dict[method.ServiceName] = new List<RestMethod>();
+				}
+				dict[method.ServiceName].Add(method);
+			}
+		}
+		return dict;
+	}
+
+
+	public List<RestMethod> GetMethods() {
+		string url = "http://developers.facebook.com/docs/reference/rest/";
+	 	var methods = new List<RestMethod>();
+        var web = new HtmlAgilityPack.HtmlWeb();
+        var doc = web.Load(url);
+        var pageNodes = doc.DocumentNode.Descendants("div").Where(d => d.Attributes["class"] != null && d.Attributes["class"] .Value == "page");
+        foreach (var node in pageNodes)
+        {
+            var a = node.Descendants("a").SingleOrDefault();
+			var p = node.Descendants("p").SingleOrDefault();
+            if (a != null)
+            {
+				var parts = a.InnerText.Split('.');
+				if (parts.Length != 2) {
+					throw new System.InvalidOperationException("Invalid method name");
+				}
+				bool deprecated;
+				var restMethod = new RestMethod {
+					MethodName = parts[1],
+					MethodProperName = ToProperRestMethodName(parts[1]),
+					ServiceName = parts[0],
+					Description = p.InnerText,
+					Parameters = GetParameters(a.InnerText, out deprecated),
+				};
+				if (!deprecated) {
+                	methods.Add(restMethod);
+				}
+            }
+        }
+		return methods;
+	}
+	
+	public List<ParamDef> GetParameters(string fullMethodName, out bool deprecated) {
+		string url = "http://developers.facebook.com/docs/reference/rest/" + fullMethodName;
+		var web = new HtmlAgilityPack.HtmlWeb();
+        var doc = web.Load(url);
+		
+		var paramDefs = new List<ParamDef>();
+		
+		deprecated = doc.DocumentNode.Descendants("div").Where(d => d.Attributes["class"] != null && d.Attributes["class"] .Value == "deprecated").SingleOrDefault() != null;
+		
+		if (!deprecated) {
+			var paramsTable = doc.DocumentNode.Descendants("table").Where(d => d.Attributes["class"] != null && d.Attributes["class"] .Value == "params").SingleOrDefault();
+			if (paramsTable != null) {
+				var paramsRows = paramsTable.Descendants("tr");
+				foreach (var row in paramsRows) {
+					var columns = row.Descendants("td").ToArray();
+					if (columns.Length == 3) {
+						var name = columns[0].InnerText;
+						var type = columns[1].InnerText;
+						var description = columns[2].InnerText.Trim();
+						if (name != "Name") {
+							var def = new ParamDef {
+								Name = CleanRestParameterName(name),
+								Type = GetRestArgumentTypeName(name, type.ToString().Trim()),
+								Description = description,
+							};
+							paramDefs.Add(def);
+						}
+					}
+				}
+			}
+		}
+		return paramDefs;
+	}
+	
+	public string CleanRestParameterName(string name) {
+		name = name.Replace("[", "").Replace("]", "");
+		if (name == "no name") {
+			name = "data";
+		}
+		return name;
+	}
+	
+	public string ToProperRestMethodName(string method) {
+		var s = method[0].ToString().ToUpper();
+		method = s + method.Substring(1);
+		method = method.Replace("FBML", "Fbml"); // HACK: Casing fix
+		method = method.Replace("info", "Info"); // HACK: Casing fix
+		method = method.Replace("report", "Report"); // HACK: Casing fix
+		return method;
+	}
+	
+	public string GetRestArgumentTypeName(string argumentName, string type) {
+		// Correct for incorrect types defined for certain argument names
+		switch (argumentName) {
+			case "uids":
+				type = "long[]";
+				break;
+			case "uid":
+				type = "long";
+				break;
+			case "period":
+				type = "TimeSpan";
+				break;
+		}
+		
+		if (argumentName.EndsWith("_time")) {
+			type = "DateTime";
+		}
+		
+		switch (type) {
+			case "time":
+				return "DateTime";
+			case "array":
+			case "json array":
+				return "string[]";
+			case "data":
+				return "byte[]";
+			case "uid":
+				return "long";
+			default:
+				return type;
+		}
+	}
+	
+	public class RestMethod {
+		public string MethodName { get; set; }
+		public string MethodProperName { get; set; }
+		public string ServiceName { get; set; }
+		public string Description { get; set; }
+		public List<ParamDef> Parameters { get; set; }
+	}
+	
+	public class ParamDef {
+		public string Name { get; set; }
+		public string Type { get; set; }
+		public string Description { get; set; }
+	}
+
+#>

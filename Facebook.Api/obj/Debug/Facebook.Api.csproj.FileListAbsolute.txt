@@ -1,0 +1,8 @@
+C:\Users\Wayne Douglas\Dev\Scratch\FaceBookSdkContrib\Source\Facebook.Api\bin\Debug\Facebook.Api.dll
+C:\Users\Wayne Douglas\Dev\Scratch\FaceBookSdkContrib\Source\Facebook.Api\bin\Debug\Facebook.Api.pdb
+C:\Users\Wayne Douglas\Dev\Scratch\FaceBookSdkContrib\Source\Facebook.Api\bin\Debug\IQToolkit.Data.Access.dll
+C:\Users\Wayne Douglas\Dev\Scratch\FaceBookSdkContrib\Source\Facebook.Api\bin\Debug\IQToolkit.Data.dll
+C:\Users\Wayne Douglas\Dev\Scratch\FaceBookSdkContrib\Source\Facebook.Api\bin\Debug\IQToolkit.dll
+C:\Users\Wayne Douglas\Dev\Scratch\FaceBookSdkContrib\Source\Facebook.Api\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Wayne Douglas\Dev\Scratch\FaceBookSdkContrib\Source\Facebook.Api\obj\Debug\Facebook.Api.dll
+C:\Users\Wayne Douglas\Dev\Scratch\FaceBookSdkContrib\Source\Facebook.Api\obj\Debug\Facebook.Api.pdb

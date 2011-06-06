@@ -1,0 +1,4 @@
+<Modules>
+  <Module PersistentId="BA40B6AC-3B29-4981-BA39-4D92FBC0E3E2" ModuleId="Facebook.Api" />
+  <Module PersistentId="62C2AEF3-227A-4901-9464-98079E2D723B" ModuleId="Facebook.Templates" />
+</Modules>

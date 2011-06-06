@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{62C2AEF3-227A-4901-9464-98079E2D723B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Facebook.Templates</RootNamespace>
+    <AssemblyName>Facebook.Templates</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL" />
+    <Reference Include="htmlunit-2.7">
+      <HintPath>..\..\..\HtmlUnitWrapper\src\WebDriver.HtmlUnit\bin\Debug\htmlunit-2.7.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core">
+      <HintPath>..\..\..\HtmlUnitWrapper\src\WebDriver.HtmlUnit\bin\Debug\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Reduced">
+      <HintPath>..\..\..\HtmlUnitWrapper\src\WebDriver.HtmlUnit.Demo\bin\Debug\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\RavenDb\Unstable\376\Client\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver.Common">
+      <HintPath>..\..\..\HtmlUnitWrapper\src\WebDriver.HtmlUnit\bin\Debug\WebDriver.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Firefox">
+      <HintPath>..\..\..\HtmlUnitWrapper\lib\selenium-dotnet\WebDriver.Firefox.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.HtmlUnit">
+      <HintPath>..\..\..\HtmlUnitWrapper\src\WebDriver.HtmlUnit\bin\Debug\WebDriver.HtmlUnit.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Remote">
+      <HintPath>..\..\..\HtmlUnitWrapper\lib\selenium-dotnet\WebDriver.Remote.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Remote.Common">
+      <HintPath>..\..\..\HtmlUnitWrapper\lib\selenium-dotnet\WebDriver.Remote.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FqlObjectBuilder.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FqlObjectBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GraphObjectBuilder.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GraphObjectBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestObjectBuilder.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestObjectBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RestObjectBuilderHtmlUnit.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestObjectBuilderHtmlUnit.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Test.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FqlObjectBuilder.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FqlObjectBuilder.cs</LastGenOutput>
+    </None>
+    <None Include="GraphObjectBuilder.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GraphObjectBuilder.cs</LastGenOutput>
+    </None>
+    <None Include="RestObjectBuilder.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RestObjectBuilder.cs</LastGenOutput>
+    </None>
+    <None Include="RestObjectBuilderHtmlUnit.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RestObjectBuilderHtmlUnit.cs</LastGenOutput>
+    </None>
+    <None Include="Settings.ttinclude" />
+    <None Include="Shared.ttinclude" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HtmlAgilityPack.dll" />
+    <Content Include="htmlunit-2.7.dll" />
+    <Content Include="IKVM.OpenJDK.Beans.dll" />
+    <Content Include="IKVM.OpenJDK.Core.dll" />
+    <Content Include="IKVM.OpenJDK.Media.dll" />
+    <Content Include="IKVM.OpenJDK.Naming.dll" />
+    <Content Include="IKVM.OpenJDK.Remoting.dll" />
+    <Content Include="IKVM.OpenJDK.Security.dll" />
+    <Content Include="IKVM.OpenJDK.SwingAWT.dll" />
+    <Content Include="IKVM.OpenJDK.Text.dll" />
+    <Content Include="IKVM.OpenJDK.Util.dll" />
+    <Content Include="IKVM.OpenJDK.XML.API.dll" />
+    <Content Include="IKVM.OpenJDK.XML.Parse.dll" />
+    <Content Include="IKVM.Runtime.dll" />
+    <Content Include="IKVM.Runtime.JNI.dll" />
+    <Content Include="WebDriver.Common.dll" />
+    <Content Include="WebDriver.HtmlUnit.dll" />
+    <Content Include="WebDriver.Remote.Common.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Facebook.Api\Facebook.Api.csproj">
+      <Project>{BA40B6AC-3B29-4981-BA39-4D92FBC0E3E2}</Project>
+      <Name>Facebook.Api</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
