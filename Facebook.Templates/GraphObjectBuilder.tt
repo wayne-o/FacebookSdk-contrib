@@ -118,7 +118,7 @@ namespace <#=Namespace #>.Graph {
 	  public List<ObjectDef> GetObjects()
         {
 			  _driver = new HtmlUnitDriver(false);
-			 Login("wayne@prjatk.com", "sonatribe2011", _driver);
+			 Login("********", "*******", _driver);
             _driver.Url = "http://developers.facebook.com/docs/reference/api/";
             var _newdriver = new HtmlUnitDriver(false);
 
